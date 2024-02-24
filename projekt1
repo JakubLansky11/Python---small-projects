@@ -1,3 +1,8 @@
+# První projekt - kurz Python - engeto - textový analyzátor
+# Autor - Jakub Lánský
+# Emil - kubik.langos@seznam.cz
+# Discord - Kuba L. 11
+
 users = {
 "bob" : "123", 
 "ann" : "pass123",
