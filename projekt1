@@ -1,0 +1,122 @@
+users = {
+"bob" : "123", 
+"ann" : "pass123",
+"mike" : "password123", 
+"liz" : "pass123"
+}
+
+indent = "-" * 60
+
+texts = {
+"1" : "Situated about 10 miles west of Kemmerer, Fossil Butte is a ruggedly impressive topographic feature that rises sharply some 1000 feet above Twin Creek Valley to an elevation of more than 7500 feet above sea level. The butte is located just north of US 30N and the Union Pacific Railroad, which traverse the valley.", 
+"2" : "At the base of Fossil Butte are the bright red, purple, yellow and gray beds of the Wasatch Formation. Eroded portions of these horizontal beds slope gradually upward from the valley floor and steepen abruptly. Overlying them and extending to the top of the butte are the much steeper buff-to-white beds of the Green River Formation, which are about 300 feet thick.",
+"3" : "The monument contains 8198 acres and protects a portion of the largest deposit of freshwater fish fossils in the world. The richest fossil fish deposits are found in multiple limestone layers, which lie some 100 feet below the top of the butte. The fossils represent several varieties of perch, as well as other freshwater genera and herring similar to those in modern oceans. Other fish such as paddlefish, garpike and stingray are also present.", 
+}
+
+# Entering name and password
+
+name = input("username: ")
+if name in users.keys():
+    user_password = input("password: ")
+    if user_password == users[name]:
+        print(indent)
+        print("Welcome to the ap, ", name)
+        print("We have 3 texts to be analyzed.")
+        print(indent)
+
+# Selecting a text
+
+        selected_text = input("Enter a number btw. 1 and 3 to select: ")
+        if not selected_text.isnumeric():
+            print("Please, select number!")
+        elif selected_text in texts.keys():
+            print(indent)
+
+
+# Adjusting of the text
+
+            adjusted_text = []
+            items = texts[selected_text].split()
+            for item in items:
+                adjusted_item = str(item.strip())
+                adjusted_text.append(adjusted_item)
+
+# Number of words
+
+            number_1 = len(adjusted_text)
+            print("There are", number_1, "words in the selected text.")
+
+
+# Number of tittlecase words
+
+            number_2 = 0
+            for letter in adjusted_text:
+                if letter.istitle():
+                    number_2 = number_2 + 1
+                else:
+                    continue
+            print("There are", number_2, "titlecase words.")
+
+# Number of uppercase words
+
+            number_3 = 0
+            for letter in adjusted_text:
+                if letter.isupper() and letter.isalpha():
+                    number_3 = number_3 + 1
+                else:
+                    continue
+            print("There are", number_3, "uppercase words.")
+
+# Number of lowercase words
+
+            number_4 = 0
+            for letter in adjusted_text:
+                if letter.islower():
+                    number_4 = number_4 + 1
+                else:
+                    continue
+            print("There are", number_4, "lowercase words.")
+
+# Number of numeric strings
+
+            number_5 = 0
+            for letter in adjusted_text:
+                if letter.isnumeric():
+                    number_5 = number_5 + 1
+                else:
+                    continue
+            print("There are", number_5, "numeric strings.")
+
+# The sum of all the numbers
+
+            number_6 = 0
+            numbers = []
+            for letter in adjusted_text:
+                if letter.isnumeric():
+                    numbers.append(int(letter))
+                else:
+                    continue
+            number_6 = sum(numbers)
+            print("The sum of all the numbers", number_6)
+
+# Graph   
+
+            print(indent)     
+            print(f"Len| OCCURENCES:  |NR.")
+            print(indent) 
+            words = adjusted_text
+            word_lengths = [len(word) for word in words]
+            word_lengths.sort()
+            range_max = max(word_lengths) + 1
+            for item in range(1, range_max):
+                print(item, "|", word_lengths.count(item) * "*", "|", word_lengths.count(item))  
+
+
+# Errors
+
+        else:
+            print("Wrong number!")
+    else:
+        print("Wrong password! Terminating the program..")
+else:
+    print("Unregistered user, terminating the program..")
