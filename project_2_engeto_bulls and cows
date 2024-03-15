@@ -30,7 +30,7 @@ while True:
     break
 
 solution = first_number + second_number + third_number + fourth_number
-print(solution)
+
 print(indent)
 
 guesses = 0
